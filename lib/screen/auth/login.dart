@@ -1,6 +1,6 @@
 import 'package:aplikasi_sepatu/provider/auth_provider.dart';
-import 'package:aplikasi_sepatu/screen/regist.dart';
-import 'package:aplikasi_sepatu/screen/sepatu_management.dart';
+import 'package:aplikasi_sepatu/screen/auth/regist.dart';
+import 'package:aplikasi_sepatu/screen/sepatu/sepatu_management.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -14,12 +14,24 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Login')),
       body: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 120),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            const Text(
+              'Masuk ke akun Anda',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 30),
             TextField(
                 controller: emailController,
                 decoration: const InputDecoration(labelText: 'Email')),
+            const SizedBox(height: 10),
             TextField(
                 controller: passwordController,
                 decoration: const InputDecoration(labelText: 'Password'),
@@ -43,6 +55,7 @@ class LoginScreen extends StatelessWidget {
               },
               child: const Text('Login'),
             ),
+            const SizedBox(height: 10),
             TextButton(
               onPressed: () => Navigator.push(
                 context,

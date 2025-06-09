@@ -1,7 +1,8 @@
 import 'dart:convert';
+import 'package:aplikasi_sepatu/config/api.dart';
 import 'package:http/http.dart' as http;
 
-const String baseUrl = 'http://localhost:3000';
+const String baseUrl = ApiServices.baseUrl;
 
 class AuthService {
   Future<bool> register({

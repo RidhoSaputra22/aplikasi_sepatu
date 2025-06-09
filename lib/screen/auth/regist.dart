@@ -1,5 +1,5 @@
 import 'package:aplikasi_sepatu/provider/auth_provider.dart';
-import 'package:aplikasi_sepatu/screen/login.dart';
+import 'package:aplikasi_sepatu/screen/auth/login.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -24,20 +24,26 @@ class _RegisterScreenState extends State<RegisterScreen> {
         padding: const EdgeInsets.all(16),
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               TextField(
                   controller: nameController,
                   decoration: const InputDecoration(labelText: 'Nama')),
+              const SizedBox(height: 10),
               TextField(
                   controller: emailController,
                   decoration: const InputDecoration(labelText: 'Email')),
+              const SizedBox(height: 10),
               TextField(
                   controller: passwordController,
                   decoration: const InputDecoration(labelText: 'Password'),
                   obscureText: true),
+              const SizedBox(height: 10),
               TextField(
                   controller: alamatController,
                   decoration: const InputDecoration(labelText: 'Alamat')),
+              const SizedBox(height: 10),
               TextField(
                   controller: noTelpController,
                   decoration: const InputDecoration(labelText: 'No Telepon')),

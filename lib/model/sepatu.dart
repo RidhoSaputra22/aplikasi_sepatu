@@ -4,14 +4,13 @@ import 'package:http/http.dart' as http;
 const String baseUrl = 'http://localhost:3000';
 
 class Sepatu {
-  final String? id;
-  final String namaSepatu;
-  final String merek;
-  final String ukuran;
-  final String harga;
-  final String stok;
-  final String deskripsi;
-  final String gambar;
+  final int? id;
+  final String? namaSepatu;
+  final String? merek;
+  final String? ukuran;
+  final String? harga;
+  final String? stok;
+  final String? deskripsi;
 
   Sepatu({
     this.id,
@@ -21,31 +20,29 @@ class Sepatu {
     required this.harga,
     required this.stok,
     required this.deskripsi,
-    required this.gambar,
   });
 
   factory Sepatu.fromJson(Map<String, dynamic> json) {
     return Sepatu(
-      id: json['id'],
-      namaSepatu: json['nama_sepatu'],
-      merek: json['merek'],
-      ukuran: json['ukuran'],
-      harga: json['harga'],
-      stok: json['stok'],
-      deskripsi: json['deskripsi'],
-      gambar: json['gambar_url'],
+      id: json['id'] ?? null,
+      namaSepatu: json['nama_sepatu'] ?? null,
+      merek: json['merek'] ?? null,
+      ukuran: json['ukuran']?.toString() ?? null,
+      harga: json['harga']?.toString() ?? null,
+      stok: json['stok']?.toString() ?? null,
+      deskripsi: json['deskripsi'] ?? null,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'nama_sepatu': namaSepatu,
-      'merek': merek,
-      'ukuran': ukuran,
-      'harga': harga,
-      'stok': stok,
-      'deskripsi': deskripsi,
-      'gambar_url': gambar,
+      'id': id ?? null,
+      'nama_sepatu': namaSepatu ?? null,
+      'merek': merek ?? null,
+      'ukuran': ukuran ?? null,
+      'harga': harga ?? null,
+      'stok': stok ?? null,
+      'deskripsi': deskripsi ?? null,
     };
   }
 
@@ -54,15 +51,7 @@ class Sepatu {
     if (response.statusCode == 200) {
       List data = json.decode(response.body);
       return data
-          .map((json) => Sepatu(
-                namaSepatu: json['nama_sepatu'],
-                merek: json['merek'],
-                ukuran: json['ukuran'.toString()],
-                harga: json['harga'].toString(),
-                stok: json['stok'].toString(),
-                deskripsi: json['deskripsi'],
-                gambar: json['gambar_url'],
-              ))
+          .map((json) => Sepatu.fromJson(json as Map<String, dynamic>))
           .toList();
     } else {
       throw Exception('Gagal memuat data sepatu');
